@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">GuideApp</string>
+
+    <!--Bottom Nav Menu-->
+    <string name="home">Home</string>
+    <string name="street_art">Street Art</string>
+    <string name="scan_qr">Scan QR</string>
+
+    <!--OptionMenu-->
+    <string name="audio">Audio</string>
+    <string name="contact_us">Contact US</string>
+    <string name="home_title">West-Kruiskade tour guide</string>
+    <string name="home_start_message_text">Not sure where to start?\nGo for one of our feautured attractions</string>
+
+</resources>

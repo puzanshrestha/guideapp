@@ -1,0 +1,18 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_home"
+        android:enabled="true"
+        android:icon="@drawable/ic_home"
+        android:title="@string/home"/>
+    <item
+        android:id="@+id/menu_street_art"
+        android:enabled="true"
+        android:icon="@drawable/ic_street_art"
+        android:title="@string/street_art"/>
+
+    <item
+        android:id="@+id/menu_scan_qr"
+        android:enabled="true"
+        android:icon="@drawable/ic_scan_qr"
+        android:title="@string/scan_qr"/>
+</menu>

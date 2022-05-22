@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="BottomNavigationViewTextStyle">
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="Widget.ActionButton.Overflow" parent="@android:style/Widget.Holo.ActionButton.Overflow">
+        <item name="android:src">@drawable/ic_option_menu</item>
+    </style>
+
+    <style name="RosarioTextStyle">
+        <item name="android:fontFamily">@font/rosario_regular</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="RalewayTextStyle">
+        <item name="android:fontFamily">@font/raleway_bold</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+</resources>
