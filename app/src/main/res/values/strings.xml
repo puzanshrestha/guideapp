@@ -11,5 +11,6 @@
     <string name="contact_us">Contact US</string>
     <string name="home_title">West-Kruiskade tour guide</string>
     <string name="home_start_message_text">Not sure where to start?\nGo for one of our feautured attractions</string>
+    <string name="scan_qr_code">Scan QR code to know more\nabout this art piece</string>
 
 </resources>

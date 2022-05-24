@@ -3,11 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/homeFragment">
-
+    app:startDestination="@id/QRScanFragment">
     <fragment
-        android:id="@+id/homeFragment"
-        android:name="com.project.guideapp.ui.home.HomeFragment"
-        android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/QRScanFragment"
+        android:name="com.project.guideapp.ui.scanqr.qrcode.QRScanFragment"
+        android:label="QRScanFragment" />
 </navigation>

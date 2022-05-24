@@ -11,6 +11,11 @@ import androidx.appcompat.view.menu.MenuPopupHelper
 import androidx.fragment.app.Fragment
 import com.project.guideapp.R
 import com.project.guideapp.databinding.FragmentHomeBinding
+import android.graphics.Outline
+
+import android.view.ViewOutlineProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 
 class HomeFragment : Fragment() {
@@ -23,6 +28,11 @@ class HomeFragment : Fragment() {
         binding = FragmentHomeBinding.inflate(inflater)
         binding.toolbar.tvTitle.text = "Home"
         binding.toolbar.ivBack.visibility = View.GONE
+
+        var featuredAttractionsAdapter = FeaturedAttractionsAdapter()
+        binding.rvFeaturedAttractions.adapter = featuredAttractionsAdapter
+        binding.rvFeaturedAttractions.layoutManager =
+            LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
         return binding.root
     }
 
@@ -42,6 +52,8 @@ class HomeFragment : Fragment() {
             optionsMenu.show()
 
         }
+
+
     }
 
 
