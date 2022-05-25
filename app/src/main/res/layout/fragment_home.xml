@@ -19,10 +19,6 @@
                 android:id="@+id/toolbar"
                 layout="@layout/toolbar" />
 
-            <include
-                android:id="@+id/clip_padding_test"
-                layout="@layout/item_featured_attractions" />
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

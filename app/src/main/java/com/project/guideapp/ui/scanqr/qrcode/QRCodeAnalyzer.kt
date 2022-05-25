@@ -12,7 +12,7 @@ class QRCodeAnalyzer(private val qrCodeDetectorInterface: QRCodeDetector) : Imag
     private val qrCodeReader = QRCodeReader()
 
     interface QRCodeDetector {
-        fun onQrCodeDetected(result: Result?)
+        fun onQrCodeDetected(result: Result)
     }
 
     override fun analyze(image: ImageProxy) {

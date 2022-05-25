@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import com.project.guideapp.R
 
 
-class StreetArt : Fragment() {
+class StreetArtFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

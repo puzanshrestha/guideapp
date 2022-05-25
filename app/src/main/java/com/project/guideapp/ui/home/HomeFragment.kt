@@ -37,21 +37,20 @@ class HomeFragment : Fragment() {
     }
 
 
-    @SuppressLint("RestrictedApi")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.toolbar.ivOptionMenu.setOnClickListener {
-            val menuBuilder = MenuBuilder(context)
-            val inflater = MenuInflater(context)
-            inflater.inflate(R.menu.option_menu, menuBuilder)
-            val optionsMenu =
-                MenuPopupHelper(requireContext(), menuBuilder, binding.toolbar.ivOptionMenu)
-            optionsMenu.setForceShowIcon(true)
-
-            optionsMenu.show()
-
-        }
+//        binding.toolbar.ivOptionMenu.setOnClickListener {
+//            val menuBuilder = MenuBuilder(context)
+//            val inflater = MenuInflater(context)
+//            inflater.inflate(R.menu.option_menu, menuBuilder)
+//            val optionsMenu =
+//                MenuPopupHelper(requireContext(), menuBuilder, binding.toolbar.ivOptionMenu)
+//            optionsMenu.setForceShowIcon(true)
+//
+//            optionsMenu.show()
+//
+//        }
 
 
     }
