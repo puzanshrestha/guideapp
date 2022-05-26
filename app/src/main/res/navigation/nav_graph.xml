@@ -7,7 +7,11 @@
     <fragment
         android:id="@+id/menu_home"
         android:name="com.project.guideapp.ui.home.HomeFragment"
-        android:label="HomeFragment" />
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/action_menu_home_to_exhibitDetailFragment"
+            app:destination="@id/exhibitDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/menu_street_art"
         android:name="com.project.guideapp.ui.streetart.StreetArtFragment"
@@ -15,5 +19,13 @@
     <fragment
         android:id="@+id/menu_scan_qr"
         android:name="com.project.guideapp.ui.scanqr.ScanQRFragment"
-        android:label="HomeFragment" />
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/action_menu_scan_qr_to_exhibitDetailFragment"
+            app:destination="@id/exhibitDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/exhibitDetailFragment"
+        android:name="com.project.guideapp.ui.exhibitdetail.ExhibitDetailFragment"
+        android:label="ExhibitDetailFragment" />
 </navigation>

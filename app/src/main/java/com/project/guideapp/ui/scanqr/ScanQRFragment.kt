@@ -14,6 +14,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LifecycleOwner
+import androidx.navigation.findNavController
 import com.google.zxing.Result
 import com.project.guideapp.R
 import com.project.guideapp.ui.scanqr.qrcode.QRCodeAnalyzer
@@ -162,7 +163,9 @@ class ScanQRFragment : Fragment() {
     }
 
     private fun handleQRCodeScanResult(text: String) {
-        //TODO Handle QR Code
+        var bundle = Bundle()
+        bundle.putString("ID", text)
+        view?.findNavController()?.navigate(R.id.action_menu_scan_qr_to_exhibitDetailFragment, bundle)
     }
 
     fun toggleFlashLight() {

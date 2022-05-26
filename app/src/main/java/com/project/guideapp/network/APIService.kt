@@ -6,6 +6,7 @@ import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Path
 
 private const val BASE_URL = "https://westkruiskadeapi.azurewebsites.net/"
 
@@ -24,6 +25,9 @@ interface CapstoneApiService {
 
     @GET("api/exhibits")
     suspend fun getExhibits(): List<ExhibitsDTO>
+
+    @GET("api/artists/{id}/exhibits")
+    suspend fun getExhibitDetail(@Path("id") exhibitId:String):List<ExhibitsDTO>
 }
 
 object APIService {

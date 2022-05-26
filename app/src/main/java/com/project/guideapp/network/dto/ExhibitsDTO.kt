@@ -4,7 +4,7 @@ package com.project.guideapp.network.dto
 data class ExhibitsDTO(
     val artStyle: String,
     val artistId: String,
-    val artistName: String,
+    val artistName: String?,
     val audios: List<Audio>,
     val id: String,
     val images: List<Image>,
