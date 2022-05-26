@@ -4,157 +4,188 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.project.guideapp.ui.exhibitdetail.ExhibitDetailViewModel" />
+    </data>
+
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.exhibitdetail.ExhibitDetailFragment">
+        android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/iv_art_image_bg"
-            android:layout_width="match_parent"
-            android:scaleType="centerCrop"
-            android:layout_height="match_parent" />
-
-        <LinearLayout
+        <ProgressBar
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:gravity="center"
-            android:orientation="horizontal"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:src="@drawable/ic_back_arrow" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:fontFamily="@font/rosario_bold"
-                android:includeFontPadding="false"
-                android:text="Back"
-                android:textColor="@color/white"
-                android:textSize="20sp" />
-        </LinearLayout>
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/center_guide_line"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.35" />
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            android:layout_gravity="center"
+            android:progressVisibility="@{viewModel.status}" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:background="@drawable/bg_transparent_black_top_rounded"
-            android:padding="20dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="@id/center_guide_line">
+            android:layout_height="match_parent"
+            tools:context=".ui.exhibitdetail.ExhibitDetailFragment">
 
-            <ScrollView
+            <ImageView
+                android:id="@+id/iv_art_image_bg"
                 android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingBottom="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:id="@+id/ll_back"
+                android:orientation="horizontal"
+                app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <LinearLayout
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_back_arrow" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:fontFamily="@font/rosario_bold"
+                    android:includeFontPadding="false"
+                    android:text="Back"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <com.project.guideapp.AudioPlayerView
+                android:id="@+id/audio_player_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="@id/center_guide_line"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/center_guide_line"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.35" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="@drawable/bg_transparent_black_top_rounded"
+                android:padding="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="@id/center_guide_line">
+
+                <ScrollView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/tv_art_title"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:fontFamily="@font/rosario_bold"
-                        android:textColor="@color/white"
-                        android:textSize="18sp"
-                        tools:text="Maarten Wendrich" />
-
-                    <TextView
-                        android:id="@+id/tv_art_location"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:fontFamily="@font/rosario_regular"
-                        android:text="Marijn Gronert en Wessel Heij 12,2902 GC, west-kruiskade"
-                        android:textColor="@color/white"
-                        android:textSize="15sp" />
+                    android:paddingBottom="20dp"
+                    android:id="@+id/scroll_view"
+                    app:layout_constraintTop_toTopOf="parent">
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="end"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginEnd="20dp"
-                        android:gravity="center"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/ic_location" />
+                        android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/tv_art_title"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="10dp"
-                            android:fontFamily="@font/raleway_bold"
-                            android:text="@string/see_location"
-                            android:textColor="@color/teal" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:fontFamily="@font/rosario_bold"
-                            android:text="About"
-                            android:textColor="@color/white" />
+                            android:textColor="@color/white"
+                            android:textSize="18sp"
+                            tools:text="Maarten Wendrich" />
 
-                        <ImageView
+                        <TextView
+                            android:id="@+id/tv_artist_name"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="30dp"
-                            android:src="@drawable/ic_audio_file" />
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/rosario_regular"
+                            android:text="Marijn Gronert en Wessel Heij 12,2902 GC, west-kruiskade"
+                            android:textColor="@color/white"
+                            android:textSize="15sp" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginEnd="20dp"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_location" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:fontFamily="@font/raleway_bold"
+                                android:text="@string/see_location"
+                                android:textColor="@color/teal" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/rosario_bold"
+                                android:text="About"
+                                android:textColor="@color/white" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="30dp"
+                                android:src="@drawable/ic_audio_file" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/tv_story"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:fontFamily="@font/roboto_regular"
+                            android:lineSpacingMultiplier="1.8"
+                            android:textColor="@color/white"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/tv_back_to_top"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/rosario_bold"
+                            android:text="@string/go_back_to_top"
+                            android:textColor="@color/white"
+                            android:textSize="20sp" />
                     </LinearLayout>
+                </ScrollView>
 
-                    <TextView
-                        android:id="@+id/tv_story"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/roboto_regular"
-                        android:lineSpacingMultiplier="1.8"
-                        android:textColor="@color/white"
-                        android:layout_marginTop="20dp"
-                        android:textSize="14sp" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-                    <TextView
-                        android:id="@+id/tv_back_to_top"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:fontFamily="@font/rosario_bold"
-                        android:text="@string/go_back_to_top"
-                        android:textColor="@color/white"
-                        android:textSize="20sp" />
-                </LinearLayout>
-            </ScrollView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
+    </LinearLayout>
 </layout>

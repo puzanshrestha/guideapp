@@ -15,4 +15,6 @@
     <string name="see_location"><u>See Location</u></string>
     <string name="go_back_to_top"><u>Go back to top</u></string>
 
+    <string name="something_went_wrong">Something went wrong please try again later</string>
+
 </resources>

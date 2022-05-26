@@ -6,10 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import com.project.guideapp.R
 import com.project.guideapp.databinding.FragmentExhibitDetailBinding
-import com.project.guideapp.databinding.FragmentHomeBinding
-import com.project.guideapp.ui.home.HomeViewModel
 import com.squareup.picasso.Picasso
 
 class ExhibitDetailFragment : Fragment() {
@@ -27,6 +26,14 @@ class ExhibitDetailFragment : Fragment() {
     ): View? {
         binding = FragmentExhibitDetailBinding.inflate(layoutInflater)
         binding.lifecycleOwner = this
+        binding.viewModel = viewModel
+
+        binding.llBack.setOnClickListener{
+            view?.findNavController()?.popBackStack()
+        }
+        binding.tvBackToTop.setOnClickListener {
+            binding.scrollView.smoothScrollTo(0,0)
+        }
 
         return binding.root
     }
@@ -39,9 +46,15 @@ class ExhibitDetailFragment : Fragment() {
                 .load(it.images[0].imageUri)
                 .placeholder(R.drawable.ic_option_menu)
                 .into(binding.ivArtImageBg)
-            binding.tvArtTitle.text = it.name
-            binding.tvArtLocation.text = it.location
+            binding.tvArtTitle.text = it.name.split(",")[0]
+            binding.tvArtistName.text = it.name.split(",")[1]
             binding.tvStory.text = it.story
+            if (it.audios.isNotEmpty()) {
+                binding.audioPlayerView.visibility = View.VISIBLE
+                binding.audioPlayerView.initWithURL(it.audios[0].audioUri)
+            } else {
+                binding.audioPlayerView.visibility = View.GONE
+            }
         }
 
         val id = arguments?.getString("ID", "")

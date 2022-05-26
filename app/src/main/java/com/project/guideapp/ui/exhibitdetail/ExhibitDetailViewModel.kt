@@ -14,13 +14,20 @@ class ExhibitDetailViewModel : ViewModel() {
     val exhibitDetail: LiveData<ExhibitsDTO>
         get() = _exhibitDetail
 
+    private val _status = MutableLiveData<String>()
+    val status: LiveData<String>
+        get() = _status
+
 
     fun getExhibitDetail(exhibitId: String) {
         viewModelScope.launch {
             try {
+                _status.value = "LOADING"
                 _exhibitDetail.value = APIService.retrofitService.getExhibitDetail(exhibitId)[0]
+                _status.value = ""
             } catch (ex: Exception) {
                 println(ex)
+                _status.value = "Something went wrong please try again later"
             }
         }
     }

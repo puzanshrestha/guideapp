@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.view.menu.MenuBuilder
 import androidx.appcompat.view.menu.MenuPopupHelper
 import androidx.fragment.app.Fragment
@@ -79,24 +80,33 @@ class HomeFragment : Fragment() {
         val secondItem = exhibitList?.random()
         val thirdItem = exhibitList?.random()
 
-        updateTopItemViews(
-            firstItem,
-            binding.ivTopLeft,
-            binding.tvTopLeftTitle,
-            binding.tvTopLeftDescription
-        )
-        updateTopItemViews(
-            secondItem,
-            binding.ivTopRight,
-            binding.tvTopRightTopTitle,
-            binding.tvTopRightTopDescription
-        )
-        updateTopItemViews(
-            thirdItem,
-            binding.ivTopLeft,
-            binding.tvTopRightBottomTitle,
-            binding.tvTopRightBottomDescription
-        )
+        /* updateTopItemViews(
+             firstItem,
+             binding.ivTopLeft,
+             binding.tvTopLeftTitle,
+             binding.tvTopLeftDescription
+         )
+         updateTopItemViews(
+             secondItem,
+             binding.ivTopRight,
+             binding.tvTopRightTopTitle,
+             binding.tvTopRightTopDescription
+         )
+         updateTopItemViews(
+             thirdItem,
+             binding.ivTopLeft,
+             binding.tvTopRightBottomTitle,
+             binding.tvTopRightBottomDescription
+         )*/
+        binding.ivTopLeft.setOnClickListener {
+            view?.findNavController()?.navigate(R.id.action_menu_home_to_menu_street_art)
+        }
+        binding.ivTopRightTop.setOnClickListener {
+            view?.findNavController()?.navigate(R.id.action_menu_home_to_restaurantsFragment)
+        }
+        binding.ivTopRightBottom.setOnClickListener {
+            view?.findNavController()?.navigate(R.id.action_menu_home_to_shoppingFragment)
+        }
     }
 
     private fun updateTopItemViews(

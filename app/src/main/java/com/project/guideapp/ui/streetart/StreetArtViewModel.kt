@@ -1,15 +1,14 @@
-package com.project.guideapp.ui.home
+package com.project.guideapp.ui.streetart
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.project.guideapp.R
 import com.project.guideapp.network.APIService
 import com.project.guideapp.network.dto.ExhibitsDTO
 import kotlinx.coroutines.launch
 
-class HomeViewModel : ViewModel() {
+class StreetArtViewModel : ViewModel() {
 
     private val _exhibits = MutableLiveData<List<ExhibitsDTO>>()
     val exhibits: LiveData<List<ExhibitsDTO>>
@@ -41,5 +40,4 @@ class HomeViewModel : ViewModel() {
             }
         }
     }
-
 }
