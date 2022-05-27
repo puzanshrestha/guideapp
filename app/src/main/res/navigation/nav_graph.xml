@@ -20,11 +20,27 @@
         <action
             android:id="@+id/action_menu_home_to_restaurantsFragment"
             app:destination="@id/restaurantsFragment" />
+        <action
+            android:id="@+id/action_menu_home_to_fragmentContactUs"
+            app:destination="@id/fragmentContactUs" />
+        <action
+            android:id="@+id/action_menu_home_to_fragmentAudioTour"
+            app:destination="@id/fragmentAudioTour" />
     </fragment>
     <fragment
         android:id="@+id/menu_street_art"
         android:name="com.project.guideapp.ui.streetart.StreetArtFragment"
-        android:label="HomeFragment" />
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/action_menu_street_art_to_exhibitDetailFragment"
+            app:destination="@id/exhibitDetailFragment" />
+        <action
+            android:id="@+id/action_menu_street_art_to_fragmentContactUs"
+            app:destination="@id/fragmentContactUs" />
+        <action
+            android:id="@+id/action_menu_street_art_to_fragmentAudioTour"
+            app:destination="@id/fragmentAudioTour" />
+    </fragment>
     <fragment
         android:id="@+id/menu_scan_qr"
         android:name="com.project.guideapp.ui.scanqr.ScanQRFragment"
@@ -32,17 +48,56 @@
         <action
             android:id="@+id/action_menu_scan_qr_to_exhibitDetailFragment"
             app:destination="@id/exhibitDetailFragment" />
+        <action
+            android:id="@+id/action_menu_scan_qr_to_fragmentContactUs"
+            app:destination="@id/fragmentContactUs" />
+        <action
+            android:id="@+id/action_menu_scan_qr_to_fragmentAudioTour"
+            app:destination="@id/fragmentAudioTour" />
     </fragment>
     <fragment
         android:id="@+id/exhibitDetailFragment"
         android:name="com.project.guideapp.ui.exhibitdetail.ExhibitDetailFragment"
-        android:label="ExhibitDetailFragment" />
+        android:label="ExhibitDetailFragment" >
+        <action
+            android:id="@+id/action_exhibitDetailFragment_to_mapFragment"
+            app:destination="@id/mapFragment" />
+    </fragment>
     <fragment
         android:id="@+id/restaurantsFragment"
         android:name="com.project.guideapp.ui.restaurants.RestaurantsFragment"
-        android:label="RestaurantsFragment" />
+        android:label="RestaurantsFragment" >
+        <action
+            android:id="@+id/action_restaurantsFragment_to_fragmentContactUs"
+            app:destination="@id/fragmentContactUs" />
+        <action
+            android:id="@+id/action_restaurantsFragment_to_fragmentAudioTour"
+            app:destination="@id/fragmentAudioTour" />
+        <action
+            android:id="@+id/action_restaurantsFragment_to_fragmentContactUs2"
+            app:destination="@id/fragmentContactUs" />
+    </fragment>
     <fragment
         android:id="@+id/shoppingFragment"
         android:name="com.project.guideapp.ui.shopping.ShoppingFragment"
-        android:label="ShoppingFragment" />
+        android:label="ShoppingFragment" >
+        <action
+            android:id="@+id/action_shoppingFragment_to_fragmentContactUs"
+            app:destination="@id/fragmentContactUs" />
+        <action
+            android:id="@+id/action_shoppingFragment_to_fragmentAudioTour"
+            app:destination="@id/fragmentAudioTour" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentAudioTour"
+        android:name="com.project.guideapp.ui.webviews.FragmentAudioTour"
+        android:label="FragmentAudioTour" />
+    <fragment
+        android:id="@+id/fragmentContactUs"
+        android:name="com.project.guideapp.ui.webviews.FragmentContactUs"
+        android:label="FragmentContactUs" />
+    <fragment
+        android:id="@+id/mapFragment"
+        android:name="com.project.guideapp.ui.map.MapFragment"
+        android:label="MapFragment" />
 </navigation>

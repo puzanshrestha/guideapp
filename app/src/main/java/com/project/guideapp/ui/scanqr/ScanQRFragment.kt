@@ -1,12 +1,15 @@
 package com.project.guideapp.ui.scanqr
 
+import android.annotation.SuppressLint
 import android.content.pm.PackageManager
+import android.media.Image
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.view.menu.MenuBuilder
+import androidx.appcompat.view.menu.MenuPopupHelper
 import androidx.camera.core.*
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.view.PreviewView
@@ -15,6 +18,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LifecycleOwner
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.google.zxing.Result
 import com.project.guideapp.R
 import com.project.guideapp.ui.scanqr.qrcode.QRCodeAnalyzer
@@ -33,6 +37,8 @@ class ScanQRFragment : Fragment() {
     private var cameraProvider: ProcessCameraProvider? = null
     private var ivBack: ImageView? = null
     private var qrScanningView: QRScanningView? = null
+    lateinit var toolbarTitle: TextView
+    lateinit var ivOptionMenu: ImageView
 
     @Override
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,16 +51,52 @@ class ScanQRFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_qr_scan, container, false)
+        toolbarTitle = view.findViewById(R.id.tv_title)
         previewView = view.findViewById(R.id.camera_preview_view)
         ivBack = view.findViewById(R.id.iv_back)
         qrScanningView = view.findViewById(R.id.qr_scanning_view)
+
+        ivOptionMenu = view.findViewById(R.id.iv_option_menu)
+        toolbarTitle.text = "Qr code scanner"
         return view
     }
 
+    @SuppressLint("RestrictedApi")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         ivBack!!.setOnClickListener { activity?.onBackPressed() }
         qrScanningView!!.startAnimation()
+
+        ivOptionMenu.setOnClickListener {
+            val menuBuilder = MenuBuilder(context)
+            val inflater = MenuInflater(context)
+            inflater.inflate(R.menu.option_menu, menuBuilder)
+            val optionsMenu =
+                MenuPopupHelper(requireContext(), menuBuilder, ivOptionMenu)
+            optionsMenu.setForceShowIcon(true)
+            optionsMenu.show()
+            menuBuilder.setCallback(object : MenuBuilder.Callback {
+                override fun onMenuItemSelected(menu: MenuBuilder, item: MenuItem): Boolean {
+
+                    when (item.itemId) {
+                        R.id.menu_audio -> {
+                            findNavController().navigate(R.id.fragmentAudioTour)
+                        }
+
+                        R.id.menu_contact_us -> {
+                            findNavController().navigate(R.id.fragmentContactUs)
+                        }
+                    }
+                    return true
+                }
+
+                override fun onMenuModeChange(menu: MenuBuilder) {
+
+                }
+
+            })
+
+        }
     }
 
     private fun allPermissionsGranted(): Boolean {
@@ -165,7 +207,8 @@ class ScanQRFragment : Fragment() {
     private fun handleQRCodeScanResult(text: String) {
         var bundle = Bundle()
         bundle.putString("ID", text)
-        view?.findNavController()?.navigate(R.id.action_menu_scan_qr_to_exhibitDetailFragment, bundle)
+        view?.findNavController()
+            ?.navigate(R.id.action_menu_scan_qr_to_exhibitDetailFragment, bundle)
     }
 
     fun toggleFlashLight() {

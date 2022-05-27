@@ -5,7 +5,7 @@
             android:id="@+id/menu_audio"
             android:enabled="true"
             android:icon="@drawable/ic_audio"
-            android:title="@string/home"
+            android:title="@string/audio"
             app:showAsAction="ifRoom" />
     </group>
     <group>

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">GuideApp</string>
+    <string name="app_name">WK tour guide</string>
 
     <!--Bottom Nav Menu-->
     <string name="home">Home</string>
@@ -7,8 +7,8 @@
     <string name="scan_qr">Scan QR</string>
 
     <!--OptionMenu-->
-    <string name="audio">Audio</string>
-    <string name="contact_us">Contact US</string>
+    <string name="audio">Audio tour</string>
+    <string name="contact_us">Contact Us</string>
     <string name="home_title">West-Kruiskade tour guide</string>
     <string name="home_start_message_text">Not sure where to start?\nGo for one of our feautured attractions</string>
     <string name="scan_qr_code">Scan QR code to know more\nabout this art piece</string>
@@ -16,5 +16,9 @@
     <string name="go_back_to_top"><u>Go back to top</u></string>
 
     <string name="something_went_wrong">Something went wrong please try again later</string>
+    <string name="search_result_count">Results found (%d)</string>
+    <string name="contact_us_title">How can we help you ?</string>
+    <string name="contact_us_message">Please feel free to send us your question, suggestion or comment. We will reply within 24 hrs.</string>
+    <string name="contact_us_message_sent">Your message has been sent.\nWe will get back to you in 24 hours.</string>
 
 </resources>

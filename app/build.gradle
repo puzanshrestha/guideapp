@@ -84,4 +84,8 @@ dependencies {
     def flow_text_view = "2.0.5"
     implementation "com.github.deano2390:FlowTextView:$flow_text_view"
 
+    def google_map_version = "18.0.2"
+    implementation "com.google.android.gms:play-services-maps:$google_map_version"
+
+
 }

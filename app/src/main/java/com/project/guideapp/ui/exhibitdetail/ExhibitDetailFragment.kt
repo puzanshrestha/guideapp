@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.project.guideapp.R
 import com.project.guideapp.databinding.FragmentExhibitDetailBinding
 import com.squareup.picasso.Picasso
@@ -28,13 +29,20 @@ class ExhibitDetailFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
-        binding.llBack.setOnClickListener{
+        binding.llBack.setOnClickListener {
             view?.findNavController()?.popBackStack()
         }
         binding.tvBackToTop.setOnClickListener {
-            binding.scrollView.smoothScrollTo(0,0)
+            binding.scrollView.smoothScrollTo(0, 0)
+        }
+        binding.ivAudioShowHide.setOnClickListener {
+            binding.audioPlayerView.visibility =
+                if (binding.audioPlayerView.visibility == View.VISIBLE) View.GONE else View.VISIBLE
         }
 
+        binding.llLocation.setOnClickListener {
+            findNavController().navigate(R.id.action_exhibitDetailFragment_to_mapFragment)
+        }
         return binding.root
     }
 
@@ -50,7 +58,6 @@ class ExhibitDetailFragment : Fragment() {
             binding.tvArtistName.text = it.name.split(",")[1]
             binding.tvStory.text = it.story
             if (it.audios.isNotEmpty()) {
-                binding.audioPlayerView.visibility = View.VISIBLE
                 binding.audioPlayerView.initWithURL(it.audios[0].audioUri)
             } else {
                 binding.audioPlayerView.visibility = View.GONE

@@ -69,6 +69,7 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintBottom_toBottomOf="@id/center_guide_line"
                 app:layout_constraintLeft_toLeftOf="parent"
+                android:visibility="gone"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -120,6 +121,7 @@
                             android:textSize="15sp" />
 
                         <LinearLayout
+                            android:id="@+id/ll_location"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="end"
@@ -155,6 +157,7 @@
                                 android:textColor="@color/white" />
 
                             <ImageView
+                                android:id="@+id/iv_audio_show_hide"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="30dp"

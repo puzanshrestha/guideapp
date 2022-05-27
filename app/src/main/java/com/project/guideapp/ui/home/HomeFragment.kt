@@ -2,23 +2,21 @@ package com.project.guideapp.ui.home
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.MenuInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.view.menu.MenuBuilder
 import androidx.appcompat.view.menu.MenuPopupHelper
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.project.guideapp.R
 import com.project.guideapp.databinding.FragmentHomeBinding
 import com.project.guideapp.network.dto.ExhibitsDTO
+import com.project.guideapp.ui.MainActivity
 import com.squareup.picasso.Picasso
 
 
@@ -34,6 +32,7 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+
         binding = FragmentHomeBinding.inflate(inflater)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
@@ -59,6 +58,27 @@ class HomeFragment : Fragment() {
                 MenuPopupHelper(requireContext(), menuBuilder, binding.toolbar.ivOptionMenu)
             optionsMenu.setForceShowIcon(true)
             optionsMenu.show()
+            menuBuilder.setCallback(object : MenuBuilder.Callback {
+                override fun onMenuItemSelected(menu: MenuBuilder, item: MenuItem): Boolean {
+
+                    when (item.itemId){
+                        R.id.menu_audio->{
+                            findNavController().navigate(R.id.action_menu_home_to_fragmentAudioTour)
+                        }
+
+                        R.id.menu_contact_us->{
+                            findNavController().navigate(R.id.action_menu_home_to_fragmentContactUs)
+                        }
+                    }
+                    return true
+                }
+
+                override fun onMenuModeChange(menu: MenuBuilder) {
+
+                }
+
+            })
+
         }
 
         viewModel.exhibits.observe(viewLifecycleOwner) {
