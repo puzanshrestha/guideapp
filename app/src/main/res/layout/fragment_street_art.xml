@@ -11,7 +11,8 @@
 
         <include
             android:id="@+id/toolbar"
-            layout="@layout/toolbar" />
+            layout="@layout/toolbar"
+            />
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -27,6 +28,8 @@
                 android:padding="10dp">
 
                 <ImageView
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
                     android:id="@+id/iv_search_back"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

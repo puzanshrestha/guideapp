@@ -108,18 +108,30 @@ class StreetArtFragment : Fragment() {
                     view.findNavController()
                         .navigate(R.id.action_menu_street_art_to_exhibitDetailFragment, bundle)
                 })
+
+            binding.etSearchText.requestFocus()
         }
 
         binding.etSearchText.onFocusChangeListener =
             View.OnFocusChangeListener { p0, focus ->
                 searchActive = focus
+                if(!focus){
+                    binding.etSearchText.hideKeyboard()
+                    binding.ivSearchBack.requestFocus()
+                    binding.etSearchText.clearFocus()
+                    binding.llSearch.visibility = View.GONE
+                    binding.ivSearchBack.setImageResource(R.drawable.ic_search)
+                    binding.etSearchText.setText("")
+                }
             }
 
+
         binding.ivSearchBack.setOnClickListener {
+            binding.etSearchText.hideKeyboard()
+            binding.ivSearchBack.requestFocus()
             binding.etSearchText.clearFocus()
             binding.llSearch.visibility = View.GONE
             binding.ivSearchBack.setImageResource(R.drawable.ic_search)
-            binding.etSearchText.hideKeyboard()
             binding.etSearchText.setText("")
         }
 
@@ -190,20 +202,22 @@ class StreetArtFragment : Fragment() {
             override fun onAnimationStart(animation: Animation) {}
             override fun onAnimationRepeat(animation: Animation) {}
             override fun onAnimationEnd(animation: Animation) {
-                when (imageCounter) {
-                    0 -> {
-                        imageCounter++
-                        binding.ivStreetArt.setImageResource(R.drawable.img_street)
-                    }
-                    1 -> {
-                        imageCounter++
-                        binding.ivStreetArt.setImageResource(R.drawable.img_street_art1)
-                    }
-                    2 -> {
-                        imageCounter=0
-                        binding.ivStreetArt.setImageResource(R.drawable.img_street_art2)
-                    }
+                if (!searchActive) {
+                    when (imageCounter) {
+                        0 -> {
+                            imageCounter++
+                            binding.ivStreetArt.setImageResource(R.drawable.img_street)
+                        }
+                        1 -> {
+                            imageCounter++
+                                binding.ivStreetArt.setImageResource(R.drawable.img_street_art1)
+                        }
+                        2 -> {
+                            imageCounter = 0
+                            binding.ivStreetArt.setImageResource(R.drawable.img_street_art2)
+                        }
 
+                    }
                 }
             }
         })
